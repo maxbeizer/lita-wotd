@@ -1,10 +1,6 @@
 require 'net/http'
 require 'uri'
-require 'pry'
 require 'rexml/document'
-require 'json'
-
-
 
 module Lita
   module Handlers
