@@ -25,7 +25,7 @@ module Lita
       end
 
       def uri
-        URI.parse 'http://dictionary.reference.com/wordoftheday/wotd.rss'
+        URI.parse 'http://www.dictionary.com/wordoftheday/wotd.rss'
       end
 
       def api_call
