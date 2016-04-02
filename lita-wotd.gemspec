@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-wotd"
-  spec.version       = "0.1.0"
+  spec.version       = "1.0.0"
   spec.authors       = ["maxbeizer"]
   spec.email         = ["max.beizer@gmail.com"]
   spec.description   = "A lita bot to get the word of the day from dictionary.com"
