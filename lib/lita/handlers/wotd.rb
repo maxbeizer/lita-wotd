@@ -5,6 +5,8 @@ require 'rexml/document'
 module Lita
   module Handlers
     class Wotd < Handler
+      WOTD_URL = 'https://wordsmith.org/awad/rss1.xml'.freeze
+
       route(/wotd/, :wotd, command: true, help: {
         'wotd' => 'returns the word of the day from dictionary.com'
       })
@@ -14,18 +16,23 @@ module Lita
       end
 
       private
+
       def the_word
-        "#{extract_the_word} - dictionary.com"
+        "#{extract_the_word} - wordsmith.org"
       end
 
       def extract_the_word
-        xml_data = api_call.body
-        doc      = REXML::Document.new(xml_data)
-        doc.get_elements('//description').last.get_text
+        title = doc.get_elements('//title').last.get_text
+        description = doc.get_elements('//description').last.get_text
+        "#{title} => #{description}"
+      end
+
+      def doc
+        @doc ||= REXML::Document.new(api_call.body)
       end
 
       def uri
-        URI.parse 'http://www.dictionary.com/wordoftheday/wotd.rss'
+        URI.parse WOTD_URL
       end
 
       def api_call
